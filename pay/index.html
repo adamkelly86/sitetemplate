@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>UPDATEME</title>
+		<script>
+		// Set initial theme early to avoid flash: prefer stored choice, else OS preference
+		(function(){
+			try{
+				const stored = localStorage.getItem('theme');
+				if(stored==='light' || stored==='dark'){
+					document.documentElement.setAttribute('data-bs-theme', stored);
+					return;
+				}
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				document.documentElement.setAttribute('data-bs-theme', prefersDark ? 'dark' : 'light');
+			}catch(e){/* ignore */}
+		})();
+		</script>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+	</head>
+	<body class="d-flex flex-column min-vh-100">
+		<div data-include="/partials/navbar.html"></div>
+		<main class="container py-5 flex-grow-1">
+			<h1 class="mb-4">Payment Options</h1>
+            <p class="lead">You can pay me back monies owed, here using one of the following methods. </p>
+
+            <div class="mb-3">
+                <label for="amountNumber" class="form-label">Amount (&pound;)</label>
+                <div class="d-flex align-items-center">
+                    <input id="amountRange" type="range" class="form-range me-3" min="1" max="250" step="0.01" value="5.00" aria-label="Amount slider" />
+                    <div class="input-group" style="max-width:140px;">
+                        <span class="input-group-text">&pound;</span>
+                        <input id="amountNumber" type="number" class="form-control" min="1" max="250" step="0.01" value="5.00" aria-label="Amount in pounds" />
+                    </div>
+                </div>
+                <div class="form-text">Adjust the amount between &pound;1.00 and &pound;250.00. You can include pence (two decimals). The selected value will be used when you click a payment option.</div>
+            </div>
+
+            <div class="row g-3 mt-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="/images/paypal.ico" alt="PayPal favicon" width="32" height="32" class="me-3" />
+                                <h5 class="card-title mb-0">PayPal</h5>
+                            </div>
+                            <p class="card-text">A PayPal account is required to proceed. Use PayPal to send a payment quickly and securely.</p>
+                            <a class="btn btn-primary mt-auto" href="#" data-base="https://www.paypal.com/paypalme/XXXXXXXXXXXXXXXXXXXXXXXXCHANGEME/" target="_blank" rel="noopener noreferrer">Donate via PayPal</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="/images/monzo.png" alt="Monzo Settle Up icon" width="32" height="32" class="me-3" />
+                                <h5 class="card-title mb-0">Monzo</h5>
+                            </div>
+                            <p class="card-text">No account required — only a Debit Card is needed. Send money using my Monzo.me link</p>
+                            <a class="btn btn-success mt-auto" href="#" data-base="https://monzo.me/XXXXXXXXXXXXXXXXXXXXXXXXCHANGEM/" target="_blank" rel="noopener noreferrer">Send with Monzo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="/images/starling.ico" alt="Starling Settle Up icon" width="32" height="32" class="me-3" />
+                                <h5 class="card-title mb-0">Starling</h5>
+                            </div>
+                            <p class="card-text">No account required — only a Debit Card is needed. Send money using Starling's Settle Up link.</p>
+                            <a class="btn btn-success mt-auto" href="#" data-base="https://settleup.starlingbank.com/XXXXXXXXXXXXXXXXXXXXXXXXCHANGEM/" target="_blank" rel="noopener noreferrer">Send with Starling</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+		</main>
+
+		<div data-include="/partials/footer.html"></div>
+
+		<script src="/js/bootstrap.bundle.min.js" defer></script>
+		<script src="/js/include-partials.js" defer></script>
+		<script src="/js/theme-toggle.js" defer></script>			
+			<script src="/js/payment-amount.js" defer></script>
+	</body>
+</html>
+
