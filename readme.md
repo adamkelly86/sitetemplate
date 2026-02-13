@@ -8,3 +8,5 @@
 
 - [ ] Change the data-base URLS on pay/index.html to your URL (usernames are marked with CHANGEME)
 - [ ] Delete any that you do not have 
+
+You can download the zip file [here](https://github.com/adamkelly86/sitetemplate/archive/refs/heads/main.zip)
